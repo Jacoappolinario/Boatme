@@ -3,7 +3,7 @@ import { getRepository, Repository } from 'typeorm';
 import {
   ICategoryRepository,
   ICreateCategoryDTO,
-} from '@modules/boats/repositories/ICreateCategoryDTO';
+} from '@modules/boats/repositories/ICategoriesRepository';
 
 import { Category } from '../entities/Category';
 

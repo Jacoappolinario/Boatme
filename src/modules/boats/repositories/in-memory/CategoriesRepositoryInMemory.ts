@@ -1,6 +1,9 @@
 import { Category } from '@modules/boats/infra/typeorm/entities/Category';
 
-import { ICategoryRepository, ICreateCategoryDTO } from '../ICreateCategoryDTO';
+import {
+  ICategoryRepository,
+  ICreateCategoryDTO,
+} from '../ICategoriesRepository';
 
 class CategoriesRepositoryInMemory implements ICategoryRepository {
   categories: Category[] = [];

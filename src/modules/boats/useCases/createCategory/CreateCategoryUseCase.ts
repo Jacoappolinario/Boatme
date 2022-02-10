@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { ICategoryRepository } from '@modules/boats/repositories/ICreateCategoryDTO';
+import { ICategoryRepository } from '@modules/boats/repositories/ICategoriesRepository';
 import { AppError } from '@shared/errors/AppError';
 
 interface IRequest {
