@@ -2,10 +2,16 @@ import { Router } from 'express';
 
 import { CreateSpecificationController } from '@modules/boats/useCases/createSpecification/CreateSpecificationController';
 
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
+
 const specificationsRoutes = Router();
 
 const createSpecificationController = new CreateSpecificationController();
 
-specificationsRoutes.post('/', createSpecificationController.handle);
+specificationsRoutes.post(
+  '/',
+  ensureAuthenticated,
+  createSpecificationController.handle,
+);
 
 export { specificationsRoutes };
