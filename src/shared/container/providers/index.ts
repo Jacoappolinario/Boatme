@@ -1,9 +1,9 @@
 import { container } from 'tsyringe';
 
-import { TwilioTwoFactorProvider } from './TwoFactorProvider/implementations/TwilioTwoFactorProvider';
-import { ITwoFactorProvider } from './TwoFactorProvider/ITwoFactorProvider';
+import { IMobileVerifyProvider } from './MobileVerifyProvider/IMobileVerifyProvider';
+import { TwilioVerifyProvider } from './MobileVerifyProvider/implementations/TwilioVerifyProvider';
 
-container.registerSingleton<ITwoFactorProvider>(
-  'TwilioTwoFactorProvider',
-  TwilioTwoFactorProvider,
+container.registerSingleton<IMobileVerifyProvider>(
+  'TwilioVerifyProvider',
+  TwilioVerifyProvider,
 );

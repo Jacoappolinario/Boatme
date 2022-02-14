@@ -33,6 +33,10 @@ class UsersRepositoryInMemory implements IUsersRepository {
 
     return user;
   }
+
+  findByPhone(phone: string): Promise<User> {
+    throw new Error('Method not implemented.');
+  }
 }
 
 export { UsersRepositoryInMemory };
