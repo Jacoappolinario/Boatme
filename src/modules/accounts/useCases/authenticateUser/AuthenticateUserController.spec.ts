@@ -27,7 +27,7 @@ describe('Authenticate User', () => {
     await connection.close();
   });
 
-  it('Should be able to authenticate user', async () => {
+  it('Should be able to authenticate an user', async () => {
     const response = await request(app).post('/sessions').send({
       email: 'admin@boatme.com.br',
       password: 'admin',
