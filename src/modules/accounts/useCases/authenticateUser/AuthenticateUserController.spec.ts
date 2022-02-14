@@ -7,8 +7,8 @@ import { app } from '@shared/infra/http/app';
 import createConnection from '@shared/infra/typeorm';
 
 let connection: Connection;
-describe('Create Specification Controller', () => {
-  beforeEach(async () => {
+describe('Authenticate User', () => {
+  beforeAll(async () => {
     connection = await createConnection();
     await connection.runMigrations();
 
@@ -17,8 +17,8 @@ describe('Create Specification Controller', () => {
 
     await connection.query(
       `INSERT INTO USERS (id, name, password, email, driver_license, "isAdmin", created_at)
-      values('${id}', 'Admin', '${password}', 'admin@boatme.com.br', 'XXXXXX', true, 'now()')
-      `,
+        values('${id}', 'Admin', '${password}', 'admin@boatme.com.br','XXXXXX', true, 'now()')
+        `,
     );
   });
 
@@ -27,24 +27,14 @@ describe('Create Specification Controller', () => {
     await connection.close();
   });
 
-  it('Should be able to create a new specification', async () => {
-    const responseToken = await request(app).post('/sessions').send({
+  it('Should be able to authenticate user', async () => {
+    const response = await request(app).post('/sessions').send({
       email: 'admin@boatme.com.br',
       password: 'admin',
     });
 
-    const { token } = responseToken.body;
-
-    const response = await request(app)
-      .post('/specifications')
-      .send({
-        name: 'Specification Supertest',
-        description: 'Specification Supertest',
-      })
-      .set({
-        Authorization: `Baerer ${token}`,
-      });
-
     expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('token');
+    expect(response.body.user.name).toEqual('Admin');
   });
 });
