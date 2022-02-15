@@ -4,9 +4,9 @@ import { VerificationCheckInstance } from 'twilio/lib/rest/verify/v2/service/ver
 
 import { IMobileVerifyProvider } from '../IMobileVerifyProvider';
 
-const accounSid = 'AC289e655eb14ffc5f1eb39dff35c94ad7';
-const authToken = '1c85b2cdda9c2bfa546670a34361ade4';
-const serviceId = 'VA8abbe5104b34b4df16ed72e5f1ac125d';
+const accounSid = '';
+const authToken = '';
+const serviceId = '';
 
 class TwilioVerifyProvider implements IMobileVerifyProvider {
   private client: Twilio;
