@@ -2,22 +2,16 @@ import { Twilio } from 'twilio';
 import { VerificationInstance } from 'twilio/lib/rest/verify/v2/service/verification';
 import { VerificationCheckInstance } from 'twilio/lib/rest/verify/v2/service/verificationCheck';
 
+import mobileVerify from '@config/mobileVerify';
+
 import { IMobileVerifyProvider } from '../IMobileVerifyProvider';
 
-const accounSid = '';
-const authToken = '';
-const serviceId = '';
+const client = new Twilio(mobileVerify.accounSid, mobileVerify.authToken);
 
 class TwilioVerifyProvider implements IMobileVerifyProvider {
-  private client: Twilio;
-
-  constructor() {
-    this.client = new Twilio(accounSid, authToken);
-  }
-
   sendSmsCode(phone: string): Promise<VerificationInstance> {
-    const status = this.client.verify
-      .services(serviceId)
+    const status = client.verify
+      .services(mobileVerify.serviceId)
       .verifications.create({ to: `+55${phone}`, channel: 'sms' })
       .then(verification => verification);
 
@@ -25,8 +19,8 @@ class TwilioVerifyProvider implements IMobileVerifyProvider {
   }
 
   checkCode(phone: string, code: string): Promise<VerificationCheckInstance> {
-    const status = this.client.verify
-      .services(serviceId)
+    const status = client.verify
+      .services(mobileVerify.serviceId)
       .verificationChecks.create({ to: `+55${phone}`, code })
       .then(verification_check => verification_check);
 

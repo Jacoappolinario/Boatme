@@ -5,13 +5,17 @@ import { SendSmsCodeUseCase } from './SendSmsCodeUseCase';
 
 class SendSmsCodeController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { phone } = request.query;
+    try {
+      const { phone } = request.query;
 
-    const sendSmsCodeUseCase = container.resolve(SendSmsCodeUseCase);
+      const sendSmsCodeUseCase = container.resolve(SendSmsCodeUseCase);
 
-    const status = await sendSmsCodeUseCase.execute(phone as string);
+      const requestResult = await sendSmsCodeUseCase.execute(phone as string);
 
-    return response.json(status);
+      return response.json(requestResult);
+    } catch (err) {
+      return response.status(400).json({ error: err.message });
+    }
   }
 }
 
