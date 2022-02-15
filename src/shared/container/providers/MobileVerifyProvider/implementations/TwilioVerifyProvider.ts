@@ -2,7 +2,7 @@ import { Twilio } from 'twilio';
 import { VerificationInstance } from 'twilio/lib/rest/verify/v2/service/verification';
 import { VerificationCheckInstance } from 'twilio/lib/rest/verify/v2/service/verificationCheck';
 
-import mobileVerify from '@config/mobileVerify';
+import mobileVerify from '@config/mobileVerify.config';
 
 import { IMobileVerifyProvider } from '../IMobileVerifyProvider';
 
