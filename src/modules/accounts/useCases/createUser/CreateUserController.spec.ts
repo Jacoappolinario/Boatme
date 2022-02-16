@@ -20,6 +20,7 @@ describe('Create User Controller', () => {
     const response = await request(app).post('/users').send({
       name: 'User Supertest',
       email: 'user@gmail.com',
+      phone: '00000000',
       password: '12345',
       driver_license: '123456',
     });

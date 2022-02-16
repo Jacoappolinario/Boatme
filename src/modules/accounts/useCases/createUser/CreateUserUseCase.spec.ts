@@ -17,12 +17,14 @@ describe('Create User', () => {
       name: 'User Test',
       email: 'user@gmail.com',
       password: '12345',
+      phone: '00000000',
       driver_license: '123456',
     };
 
     await createUserUseCase.execute({
       name: user.name,
       email: user.email,
+      phone: user.phone,
       password: user.password,
       driver_license: user.driver_license,
     });
@@ -37,6 +39,7 @@ describe('Create User', () => {
       const user = {
         name: 'User Test',
         email: 'user@gmail.com',
+        phone: '00000000',
         password: '12345',
         driver_license: '123456',
       };
@@ -44,6 +47,7 @@ describe('Create User', () => {
       await createUserUseCase.execute({
         name: user.name,
         email: user.email,
+        phone: user.phone,
         password: user.password,
         driver_license: user.driver_license,
       });
@@ -51,6 +55,7 @@ describe('Create User', () => {
       await createUserUseCase.execute({
         name: user.name,
         email: user.email,
+        phone: user.phone,
         password: user.password,
         driver_license: user.driver_license,
       });

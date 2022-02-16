@@ -16,8 +16,8 @@ describe('Authenticate User', () => {
     const password = await hash('admin', 8);
 
     await connection.query(
-      `INSERT INTO USERS (id, name, password, email, driver_license, "isAdmin", created_at)
-        values('${id}', 'Admin', '${password}', 'admin@boatme.com.br','XXXXXX', true, 'now()')
+      `INSERT INTO USERS (id, name, password, email, driver_license, "isAdmin", created_at, phone)
+        values('${id}', 'Admin', '${password}', 'admin@boatme.com.br','XXXXXX', true, 'now()', '00000000')
         `,
     );
   });

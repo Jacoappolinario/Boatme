@@ -22,6 +22,7 @@ describe('Authenticate User', () => {
     const user: ICreateUserDTO = {
       name: 'User Test',
       email: 'user@test.com.br',
+      phone: '00000000',
       password: '12345',
       driver_license: '123456',
     };
@@ -50,6 +51,7 @@ describe('Authenticate User', () => {
       const user: ICreateUserDTO = {
         name: 'User Test Error',
         email: 'user@test.com.br',
+        phone: '00000000',
         password: '12345',
         driver_license: '123456',
       };
