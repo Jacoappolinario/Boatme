@@ -1,6 +1,6 @@
-interface IMobileVerifyProvider {
+interface IPhoneVerifyProvider {
   sendSmsCode(phone: string);
   checkCode(phone: string, code: string);
 }
 
-export { IMobileVerifyProvider };
+export { IPhoneVerifyProvider };

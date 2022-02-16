@@ -1,9 +1,9 @@
 import { container } from 'tsyringe';
 
-import { IMobileVerifyProvider } from './MobileVerifyProvider/IMobileVerifyProvider';
-import { TwilioVerifyProvider } from './MobileVerifyProvider/implementations/TwilioVerifyProvider';
+import { TwilioVerifyProvider } from './PhoneVerifyProvider/implementations/TwilioVerifyProvider';
+import { IPhoneVerifyProvider } from './PhoneVerifyProvider/IPhoneVerifyProvider';
 
-container.registerSingleton<IMobileVerifyProvider>(
+container.registerSingleton<IPhoneVerifyProvider>(
   'TwilioVerifyProvider',
   TwilioVerifyProvider,
 );

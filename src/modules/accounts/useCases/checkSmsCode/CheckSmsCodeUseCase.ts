@@ -2,7 +2,7 @@ import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
-import { IMobileVerifyProvider } from '@shared/container/providers/MobileVerifyProvider/IMobileVerifyProvider';
+import { IPhoneVerifyProvider } from '@shared/container/providers/PhoneVerifyProvider/IPhoneVerifyProvider';
 import { AppError } from '@shared/errors/AppError';
 
 interface IRequest {
@@ -22,7 +22,7 @@ interface IResponse {
 class CheckSmsCodeUseCase {
   constructor(
     @inject('TwilioVerifyProvider')
-    private mobileVerifyProvider: IMobileVerifyProvider,
+    private phoneVerifyProvider: IPhoneVerifyProvider,
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
   ) {}
@@ -44,7 +44,7 @@ class CheckSmsCodeUseCase {
       );
     }
 
-    const checkCode = await this.mobileVerifyProvider.checkCode(phone, code);
+    const checkCode = await this.phoneVerifyProvider.checkCode(phone, code);
 
     if (checkCode.status !== 'approved') {
       throw new AppError(

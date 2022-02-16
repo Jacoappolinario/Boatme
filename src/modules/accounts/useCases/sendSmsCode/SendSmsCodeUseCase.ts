@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 import { VerificationInstance } from 'twilio/lib/rest/verify/v2/service/verification';
 
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
-import { IMobileVerifyProvider } from '@shared/container/providers/MobileVerifyProvider/IMobileVerifyProvider';
+import { IPhoneVerifyProvider } from '@shared/container/providers/PhoneVerifyProvider/IPhoneVerifyProvider';
 import { AppError } from '@shared/errors/AppError';
 
 @injectable()
@@ -11,7 +11,7 @@ class SendSmsCodeUseCase {
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
     @inject('TwilioVerifyProvider')
-    private mobileVerifyProvider: IMobileVerifyProvider,
+    private phoneVerifyProvider: IPhoneVerifyProvider,
   ) {}
 
   async execute(phone: string): Promise<VerificationInstance> {
@@ -21,7 +21,7 @@ class SendSmsCodeUseCase {
       throw new AppError('Phone number incorrect!', 400);
     }
 
-    const status = await this.mobileVerifyProvider.sendSmsCode(phone);
+    const status = await this.phoneVerifyProvider.sendSmsCode(phone);
 
     return status;
   }
