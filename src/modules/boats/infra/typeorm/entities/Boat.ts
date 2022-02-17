@@ -49,6 +49,7 @@ class Boat {
   constructor() {
     if (!this.id) {
       this.id = uuidV4();
+      this.available = true;
     }
   }
 }
