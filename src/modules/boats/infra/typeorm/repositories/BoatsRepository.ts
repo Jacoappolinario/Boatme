@@ -40,6 +40,32 @@ class BoatsRepository implements IBoatsRepository {
 
     return boat;
   }
+
+  async findAvailable(
+    brand?: string,
+    category_id?: string,
+    name?: string,
+  ): Promise<Boat[]> {
+    const boatsQuery = await this.repository
+      .createQueryBuilder('c')
+      .where('available = :available', { available: true });
+
+    if (brand) {
+      boatsQuery.andWhere('brand = :brand', { brand });
+    }
+
+    if (name) {
+      boatsQuery.andWhere('name = :name', { name });
+    }
+
+    if (category_id) {
+      boatsQuery.andWhere('category_id = :category_id', { category_id });
+    }
+
+    const boats = await boatsQuery.getMany();
+
+    return boats;
+  }
 }
 
 export { BoatsRepository };

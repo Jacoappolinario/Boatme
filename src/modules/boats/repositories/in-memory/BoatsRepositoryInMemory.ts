@@ -34,5 +34,26 @@ class BoatsRepositoryInMemory implements IBoatsRepository {
   async findByLicensePlate(license_plate: string): Promise<Boat> {
     return this.boats.find(boat => boat.license_plate === license_plate);
   }
+
+  async findAvailable(
+    brand?: string,
+    category_id?: string,
+    name?: string,
+  ): Promise<Boat[]> {
+    const all = this.boats.filter(boat => {
+      if (
+        boat.available === true ||
+        (brand && boat.brand === brand) ||
+        (category_id && boat.category_id === category_id) ||
+        (name && boat.name === name)
+      ) {
+        return boat;
+      }
+
+      return null;
+    });
+
+    return all;
+  }
 }
 export { BoatsRepositoryInMemory };
