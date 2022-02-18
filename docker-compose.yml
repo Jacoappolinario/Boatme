@@ -6,18 +6,18 @@ services:
         container_name: database_boatme
         restart: always
         ports: 
-            - 5432:5432
+            - $TYPEORM_PORT:$TYPEORM_PORT
         environment: 
-            - POSTGRES_USER=docker
-            - POSTGRES_PASSWORD=boatme
-            - POSTGRES_DB=boatme
+            - POSTGRES_USER=$TYPEORM_USERNAME
+            - POSTGRES_PASSWORD=$TYPEORM_PASSWORD
+            - POSTGRES_DB=$TYPEORM_DATABASE
         volumes:
             - pgdata:/data/postgres
     app:
         build: .
         container_name: boatme
         ports: 
-            - 3333:3333
+            - $APP_PORT:$APP_PORT
         volumes: 
             - .:/usr/app
         links:
