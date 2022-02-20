@@ -16,10 +16,6 @@ class CreateBoatSpecificationController {
       boat_id: id,
       specifications_id,
     });
-    console.log(
-      '🚀 ~ file: CreateBoatSpecificationController.ts ~ line 19 ~ CreateBoatSpecificationController ~ handle ~ boats',
-      boats,
-    );
 
     return response.json(boats);
   }
