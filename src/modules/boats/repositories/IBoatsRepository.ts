@@ -9,6 +9,7 @@ interface IBoatsRepository {
     category_id?: string,
     name?: string,
   ): Promise<Boat[]>;
+  findById(id: string): Promise<Boat>;
 }
 
 export { IBoatsRepository };

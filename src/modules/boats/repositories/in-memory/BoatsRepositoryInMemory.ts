@@ -14,6 +14,7 @@ class BoatsRepositoryInMemory implements IBoatsRepository {
     fine_amount,
     name,
     license_plate,
+    id,
   }: ICreateBoatDTO): Promise<Boat> {
     const boat = new Boat();
 
@@ -25,6 +26,7 @@ class BoatsRepositoryInMemory implements IBoatsRepository {
       fine_amount,
       name,
       license_plate,
+      id,
     });
 
     this.boats.push(boat);
@@ -54,6 +56,10 @@ class BoatsRepositoryInMemory implements IBoatsRepository {
     });
 
     return all;
+  }
+
+  async findById(id: string): Promise<Boat> {
+    return this.boats.find(boat => boat.id === id);
   }
 }
 export { BoatsRepositoryInMemory };

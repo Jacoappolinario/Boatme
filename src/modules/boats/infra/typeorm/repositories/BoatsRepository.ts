@@ -20,6 +20,8 @@ class BoatsRepository implements IBoatsRepository {
     fine_amount,
     brand,
     category_id,
+    specifications,
+    id,
   }: ICreateBoatDTO): Promise<Boat> {
     const boat = this.repository.create({
       name,
@@ -29,6 +31,8 @@ class BoatsRepository implements IBoatsRepository {
       fine_amount,
       brand,
       category_id,
+      specifications,
+      id,
     });
 
     await this.repository.save(boat);
@@ -65,6 +69,12 @@ class BoatsRepository implements IBoatsRepository {
     const boats = await boatsQuery.getMany();
 
     return boats;
+  }
+
+  async findById(id: string): Promise<Boat> {
+    const boat = await this.repository.findOne(id);
+
+    return boat;
   }
 }
 
