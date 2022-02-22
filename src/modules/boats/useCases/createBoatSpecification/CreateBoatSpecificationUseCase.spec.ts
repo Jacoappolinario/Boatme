@@ -33,7 +33,7 @@ describe('Create Boat Specification', () => {
   it('Should be able to add a new specification to the boat', async () => {
     const boat = await boatsRepositoryInMemory.create({
       name: 'Name Boat',
-      description: 'Description Car',
+      description: 'Description Boat',
       daily_rate: 100,
       license_plate: 'ABC-1234',
       fine_amount: 60,

@@ -12,6 +12,8 @@ import { IBoatsImagesRepository } from '@modules/boats/repositories/IBoatsImages
 import { IBoatsRepository } from '@modules/boats/repositories/IBoatsRepository';
 import { ICategoryRepository } from '@modules/boats/repositories/ICategoriesRepository';
 import { ISpecificationsRepository } from '@modules/boats/repositories/ISpecificationsRepository';
+import { RentalsRepository } from '@modules/rentals/infra/repositories/RentalsRepository';
+import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
 
 container.registerSingleton<ICategoryRepository>(
   'CategoriesRepository',
@@ -36,4 +38,9 @@ container.registerSingleton<IBoatsRepository>(
 container.registerSingleton<IBoatsImagesRepository>(
   'BoatsImagesRepository',
   BoatsImagesRepository,
+);
+
+container.registerSingleton<IRentalsRepository>(
+  'RentalsRepository',
+  RentalsRepository,
 );
