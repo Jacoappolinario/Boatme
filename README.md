@@ -54,6 +54,11 @@ Run the following command in order to start the application in a development env
 
 ```yarn dev```
 
+# 👨🏾‍🔬️ Running Tests
+
+To run tests, run the following command
+
+```yarn test```
 # 📮️ Faq
 
 **Question:** What are the tecnologies used in this project?
