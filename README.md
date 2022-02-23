@@ -25,9 +25,10 @@
 * 📂 Import categories from CSV files
 
 # 👷🏾‍♂️️ Installation
-**You need to install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/) first, then in order to clone the project via HTTPS, run this command:**
+**You need to install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/) and [Docker](https://www.docker.com/) first, then in order to clone the project via HTTPS, run this command:**
 
 ```git clone https://github.com/Jacoappolinario/Boatme.git```
+
 **Install dependencies**
 
 ```yarn install```
@@ -38,9 +39,7 @@ Create your enviroment variables based on the examples of  ```.env.example```
 
 After copying the examples, make sure to fill the variables with new values. For Twilio credentials, register on the Platform by clicking here [here](https://www.twilio.com/try-twilio), and after registering, create a service in the Verify API.
 
-**Setup a database**
-
- Fill the environment values related to database configurations and then run the following commands in order to create a postgres container.
+**Run docker container**
 
 ```docker-compose up```
 
@@ -50,9 +49,9 @@ Run the transactions in order to configure the database schema
 
 ```yarn typeorm migration:run```
 
-Run the following command in order to start the application in a development environment:
+Run admin seed
 
-```yarn dev```
+```yarn seed:admin```
 
 # 👨🏾‍🔬️ Running Tests
 
