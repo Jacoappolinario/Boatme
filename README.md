@@ -66,7 +66,7 @@ To run tests, run the following command
 
 **Question:** What are the tecnologies used in this project?
 
-**Answer:** The tecnologies used in this project are [NodeJS](https://nodejs.org/en/) + [Express Framework](http://expressjs.com/en/) to handle the server and [TypeORM](https://typeorm.io/#/) 
+**Answer:** The tecnologies used in this project are [NodeJS](https://nodejs.org/en/) + [Express Framework](http://expressjs.com/en/) to handle the server and [TypeORM](https://typeorm.io/#/) as a communication service with the database. In addition to these technologies, [Jest](https://jestjs.io/pt-BR/) was used to develop integration tests and unit tests.
 
 # Author
 
