@@ -36,7 +36,7 @@ Create your enviroment variables based on the examples of  ```.env.example```
 
 ```cp .env.example .env```
 
-After copying the examples, make sure to fill the variables with new values.
+After copying the examples, make sure to fill the variables with new values. For Twilio credentials, register on the Platform by clicking here [here](https://www.twilio.com/try-twilio), and after registering, create a service in the Verify API.
 
 **Setup a database**
 
