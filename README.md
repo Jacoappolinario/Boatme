@@ -41,7 +41,7 @@ After copying the examples, make sure to fill the variables with new values. For
 
 **Run docker container**
 
-```docker-compose up```
+```docker-compose up -d```
 
 # 🏃🏾‍♂️️ Getting Started
 
@@ -52,6 +52,10 @@ Run the transactions in order to configure the database schema
 Run admin seed
 
 ```yarn seed:admin```
+
+Viewing application logs
+
+```docker logs boatme -f```
 
 # 👨🏾‍🔬️ Running Tests
 
