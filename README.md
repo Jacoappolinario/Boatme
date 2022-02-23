@@ -12,7 +12,17 @@
   </a>
 </h3>
 
-<br />
+# 🚀️ Features
+
+* 🛥️ Boats CRUD 
+* 📑️ Categories CRUD
+* 🕹️ Specifications CRUD
+* 🙋🏾️ User CRUD
+* 📸️ Upload User Avatar
+* 🔐️ User Authentication
+* 📱️ Mobile User Authentication
+* ✍️ Rentals Boats
+* 📂 Import categories from CSV files
 
 # 👷🏾‍♂️️ Installation
 **You need to install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/) first, then in order to clone the project via HTTPS, run this command:**
@@ -42,7 +52,7 @@ Run the transactions in order to configure the database schema
 
 Run the following command in order to start the application in a development environment:
 
-```yarn dev:server```
+```yarn dev```
 
 # 📮️ Faq
 
