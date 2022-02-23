@@ -40,7 +40,7 @@ After copying the examples, make sure to fill the variables with new values. For
 
 **Setup a database**
 
-Install [Postgres](https://www.postgresql.org/) to create a database or if you have [Docker](https://www.docker.com/) in your machine, fill the environment values related to database configurations and then run the following commands in order to create a postgres container.
+ Fill the environment values related to database configurations and then run the following commands in order to create a postgres container.
 
 ```docker-compose up```
 
