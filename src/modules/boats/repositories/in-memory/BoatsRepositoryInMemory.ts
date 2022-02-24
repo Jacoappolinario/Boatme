@@ -61,5 +61,10 @@ class BoatsRepositoryInMemory implements IBoatsRepository {
   async findById(id: string): Promise<Boat> {
     return this.boats.find(boat => boat.id === id);
   }
+
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    const findIndex = this.boats.findIndex(boat => boat.id === id);
+    this.boats[findIndex].available = available;
+  }
 }
 export { BoatsRepositoryInMemory };

@@ -10,6 +10,7 @@ interface IBoatsRepository {
     name?: string,
   ): Promise<Boat[]>;
   findById(id: string): Promise<Boat>;
+  updateAvailable(id: string, available: boolean): Promise<void>;
 }
 
 export { IBoatsRepository };
