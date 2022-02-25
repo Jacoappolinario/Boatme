@@ -2,15 +2,23 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
+import { Boat } from '@modules/boats/infra/typeorm/entities/Boat';
+
 @Entity('rentals')
 class Rental {
   @PrimaryColumn()
   id: string;
+
+  @ManyToOne(() => Boat)
+  @JoinColumn({ name: 'boat_id' })
+  boat: Boat;
 
   @Column()
   boat_id: string;
