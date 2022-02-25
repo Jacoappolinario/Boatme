@@ -22,6 +22,7 @@
 * 🔐️ User Authentication
 * 📱️ Mobile User Authentication
 * ✍️ Rentals Boats
+* 📃️ List Rentals By User
 * 📂 Import categories from CSV files
 
 # 👷🏾‍♂️️ Installation
