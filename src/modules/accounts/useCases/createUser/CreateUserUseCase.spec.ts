@@ -35,30 +35,30 @@ describe('Create User', () => {
   });
 
   it('Should not be able to create a new user with email exists', async () => {
-    expect(async () => {
-      const user = {
-        name: 'User Test',
-        email: 'user@gmail.com',
-        phone: '00000000',
-        password: '12345',
-        driver_license: '123456',
-      };
+    const user = {
+      name: 'User Test',
+      email: 'user@gmail.com',
+      phone: '00000000',
+      password: '12345',
+      driver_license: '123456',
+    };
 
-      await createUserUseCase.execute({
+    await createUserUseCase.execute({
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      password: user.password,
+      driver_license: user.driver_license,
+    });
+
+    await expect(
+      createUserUseCase.execute({
         name: user.name,
         email: user.email,
         phone: user.phone,
         password: user.password,
         driver_license: user.driver_license,
-      });
-
-      await createUserUseCase.execute({
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        password: user.password,
-        driver_license: user.driver_license,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      }),
+    ).rejects.toEqual(new AppError('User already exists!'));
   });
 });

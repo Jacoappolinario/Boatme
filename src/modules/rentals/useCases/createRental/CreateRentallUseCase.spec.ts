@@ -18,6 +18,7 @@ describe('Create Rental', () => {
   beforeEach(() => {
     rentalsRepositoryInMemory = new RentalsRepositoryInMemory();
     dayjsDateProvider = new DayjsDateProvider();
+    boatsRepositoryInMemory = new BoatsRepositoryInMemory();
     createRentalUseCase = new CreateRentalUseCase(
       rentalsRepositoryInMemory,
       dayjsDateProvider,
@@ -26,9 +27,19 @@ describe('Create Rental', () => {
   });
 
   it('Should be able to create a new rental', async () => {
+    const boat = await boatsRepositoryInMemory.create({
+      name: 'Test',
+      description: 'Boat Test',
+      daily_rate: 100,
+      license_plate: 'test',
+      fine_amount: 40,
+      category_id: '1234',
+      brand: 'brand',
+    });
+
     const rental = await createRentalUseCase.execute({
       user_id: '12345',
-      boat_id: '121212',
+      boat_id: boat.id,
       expected_return_date: dayAdd24Hours,
     });
 
@@ -37,44 +48,44 @@ describe('Create Rental', () => {
   });
 
   it('Should not be able to create a new rental if there is another open to the same user', async () => {
-    expect(async () => {
-      await createRentalUseCase.execute({
-        user_id: '12345',
-        boat_id: '121212',
-        expected_return_date: dayAdd24Hours,
-      });
+    await rentalsRepositoryInMemory.create({
+      boat_id: '1111',
+      expected_return_date: dayAdd24Hours,
+      user_id: '12345',
+    });
 
-      await createRentalUseCase.execute({
+    await expect(
+      createRentalUseCase.execute({
         user_id: '12345',
         boat_id: '121212',
         expected_return_date: dayAdd24Hours,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      }),
+    ).rejects.toEqual(new AppError("There's a rental in progress for user"));
   });
 
   it('Should not be able to create a new rental if there is another open the same boat', async () => {
-    expect(async () => {
-      await createRentalUseCase.execute({
-        user_id: '123',
-        boat_id: 'test',
-        expected_return_date: dayAdd24Hours,
-      });
+    await rentalsRepositoryInMemory.create({
+      boat_id: 'test',
+      expected_return_date: dayAdd24Hours,
+      user_id: '12345',
+    });
 
-      await createRentalUseCase.execute({
+    await expect(
+      createRentalUseCase.execute({
         user_id: '321',
         boat_id: 'test',
         expected_return_date: dayAdd24Hours,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      }),
+    ).rejects.toEqual(new AppError('Boat is unavailable'));
   });
 
   it('Should not be able to create a new rental with invalid return time', async () => {
-    expect(async () => {
-      await createRentalUseCase.execute({
+    await expect(
+      createRentalUseCase.execute({
         user_id: '123',
         boat_id: 'test',
         expected_return_date: dayjs().toDate(),
-      });
-    });
+      }),
+    ).rejects.toEqual(new AppError('Invalid return time!'));
   });
 });

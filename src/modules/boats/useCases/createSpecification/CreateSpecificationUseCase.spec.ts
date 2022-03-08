@@ -29,21 +29,21 @@ describe('Create Specification', () => {
   });
 
   it('Should not be able to create a new specification with name exists', async () => {
-    expect(async () => {
-      const specification = {
-        name: 'Specification Test',
-        description: 'Specification description test',
-      };
+    const specification = {
+      name: 'Specification Test',
+      description: 'Specification description test',
+    };
 
-      await createSpecificationUseCase.execute({
+    await createSpecificationUseCase.execute({
+      name: specification.name,
+      description: specification.description,
+    });
+
+    await expect(
+      createSpecificationUseCase.execute({
         name: specification.name,
         description: specification.description,
-      });
-
-      await createSpecificationUseCase.execute({
-        name: specification.name,
-        description: specification.description,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      }),
+    ).rejects.toEqual(new AppError('Specification already exists!'));
   });
 });

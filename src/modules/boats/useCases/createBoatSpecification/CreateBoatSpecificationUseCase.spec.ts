@@ -19,15 +19,15 @@ describe('Create Boat Specification', () => {
   });
 
   it('Should not be able to add a new specification to a now-existent boat', async () => {
-    expect(async () => {
-      const boat_id = '1234';
-      const specifications_id = ['54321'];
+    const boat_id = '1234';
+    const specifications_id = ['54321'];
 
-      await createBoatSpecificationUseCase.execute({
+    await expect(
+      createBoatSpecificationUseCase.execute({
         boat_id,
         specifications_id,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      }),
+    ).rejects.toEqual(new AppError('Boat does not exists!'));
   });
 
   it('Should be able to add a new specification to the boat', async () => {
